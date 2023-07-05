@@ -20,8 +20,17 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-success m-3" onclick="window.location = '{{ route('comics.edit', $comic->id)}}'">MODIFICA FUMETTO</button>
-        <button class="btn btn-primary m-3" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
+        <button class="btn btn-success my-3" onclick="window.location = '{{ route('comics.edit', $comic->id)}}'">MODIFICA FUMETTO</button>
+
+        <form action="{{ route('comics.destroy', $comic->id)}}" method="post">
+            @csrf
+
+            @method("DELETE")
+
+            <input class="form-control mb-3 btn btn-danger" type="submit" value="ELIMINA FUMETTO">
+        </form>
+
+        <button class="btn btn-primary" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
     </div>
 
 </div>

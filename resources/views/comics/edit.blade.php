@@ -36,9 +36,9 @@
             <label for="writers">Scrittori</label>
             <input class="form-control" type="text" name="writers" value="{{$comic->writers}}">
 
-            <input class="form-control mt-4 btn btn-success" type="submit" value="MODIFICA FUMETTO">
+            <input class="form-control my-3 btn btn-success" type="submit" value="MODIFICA FUMETTO">
         </form>
-        <button class="btn btn-primary m-3" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
+        <button class="btn btn-primary" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
     </div>
 
 </div>
