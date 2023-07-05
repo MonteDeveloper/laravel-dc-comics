@@ -20,6 +20,7 @@
                 </div>
             </div>
         </div>
+        <button class="btn btn-success m-3" onclick="window.location = '{{ route('comics.edit', $comic->id)}}'">MODIFICA FUMETTO</button>
         <button class="btn btn-primary m-3" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
     </div>
 
