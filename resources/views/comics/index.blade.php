@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="container my-3">
-    <h1>Comics</h1>
     <div class="container">
+        <h1 class="text-center">Comics</h1>
+        <button class="btn btn-primary mx-3" onclick="window.location = '{{ route('comics.create')}}'">AGGIUNGI UN FUMETTO</button>
         <div class="d-flex flex-wrap">
             @foreach ($comics as $comic)
             <div class="p-3 col-3">

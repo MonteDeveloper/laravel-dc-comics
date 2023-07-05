@@ -20,7 +20,7 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary m-3" onclick="window.location = '{{ route('comics.index')}}'">TORNA ALLA HOMEPAGE</button>
+        <button class="btn btn-primary m-3" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
     </div>
 
 </div>
