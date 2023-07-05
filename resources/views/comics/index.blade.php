@@ -2,12 +2,19 @@
 
 @section('content')
 <div class="container my-3">
-    <h1>Welcome Page</h1>
-    <div class="row g-4">
-        <div class="col">
-            <div>
-                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Saepe, delectus ad esse illum omnis earum eligendi sint a minus quasi, inventore nulla autem. Maxime voluptatem eligendi veniam voluptates. Soluta, sunt!</p>
+    <h1>Comics</h1>
+    <div class="container">
+        <div class="d-flex flex-wrap">
+            @foreach ($comics as $comic)
+            <div class="p-3 col-3">
+                <div class="card my-card h-100">
+                    <img src="{{$comic->thumb}}" class="card-img-top" alt="comicImg">
+                    <div class="card-body d-flex align-items-center justify-content-center">
+                        <h5 class="card-title text-center">{{$comic->title}}</h5>
+                    </div>
+                </div>    
             </div>
+            @endforeach
         </div>
     </div>
 

@@ -26,3 +26,10 @@ footer {
 header img.logo {
     height: 2rem;
 }
+
+.my-card{
+    img{
+        height: 450px;
+        object-fit: cover;
+    }
+}
