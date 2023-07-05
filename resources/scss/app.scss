@@ -28,6 +28,9 @@ header img.logo {
 }
 
 .my-card{
+    &:hover{
+        cursor: pointer;
+    }
     img{
         height: 450px;
         object-fit: cover;
