@@ -1,1 +1,1 @@
-<footer class="p-3">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</footer>
+<footer class="p-3 text-light text-center">Made by <span class="text-danger">Lorenzo Montello</span></footer>
