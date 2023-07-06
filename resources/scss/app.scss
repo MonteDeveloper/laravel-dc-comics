@@ -17,12 +17,22 @@ footer {
     color: black;
 }
 
-.my-card{
-    &:hover{
+.my-card {
+    &:hover {
         cursor: pointer;
     }
-    img{
+
+    img {
         height: 450px;
+        object-fit: cover;
+    }
+}
+
+.my-showCard {
+    height: 70vh;
+
+    img {
+        height: 100% !important;
         object-fit: cover;
     }
 }
