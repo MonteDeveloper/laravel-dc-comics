@@ -7,7 +7,7 @@
         <div class="card w-100">
             <div class="row g-0">
                 <div class="col-md-4">
-                    <img src="{{$comic->thumb}}" class="img-fluid rounded-start" alt="comicImg">
+                    <img src="{{$comic->thumb ?? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'}}" class="img-fluid rounded-start" alt="comicImg">
                 </div>
                 <div class="col-md-8">
                     <div class="card-body">
