@@ -24,18 +24,28 @@ footer {
 .my-card {
     &:hover {
         cursor: pointer;
+        img{
+            opacity: .3;
+        }
+
+        i{
+            opacity: 1;
+        }
+    }
+
+    i{
+        transition: opacity .2s;
+        opacity: 0;
     }
 
     img {
+        transition: opacity .2s;
         height: 450px;
         object-fit: cover;
     }
 }
 
 .my-showCard {
-    min-height: 70vh;
-    height: 1px;
-
     img {
         height: 100% !important;
         object-fit: cover;

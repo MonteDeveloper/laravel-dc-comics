@@ -12,7 +12,12 @@
             @foreach ($comics as $comic)
             <div class="p-3 col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="card my-card text-white bg-dark h-100" onclick="window.location = '{{ route('comics.show', $comic->id) }}'">
-                    <img src="{{$comic->thumb ?? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'}}" class="card-img-top" alt="comicImg">
+                    <div class="position-relative">
+                        <img src="{{$comic->thumb ?? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'}}" class="card-img-top" alt="comicImg">
+                        <div class="position-absolute top-50 start-50 translate-middle">
+                            <span class="h1"><i class="fa-solid fa-circle-info"></i></span>
+                        </div>
+                    </div>
                     <div class="card-body d-flex flex-column align-items-center justify-content-center">
                         <h5 class="card-title text-center">{{$comic->title}}</h5>
                     </div>
