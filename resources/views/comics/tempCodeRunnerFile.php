@@ -1,28 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container my-3">
-    <div class="d-flex justify-content-between align-items-center">
-        <h1 class="px-3">Modifica il fumetto #{{$comic->id}}:</h1>
-        <button class="btn btn-danger" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
-    </div>
-    <hr>
-    <div class="container d-flex flex-column justify-content-center">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        <form class="d-flex flex-column gap-3" action="{{ route('comics.update', $comic->id)}}" method="post">
-            @csrf
-
-            @method("PUT")
-        
-            <div>
+<div>
                 <label for="title">Titolo:</label>
                 <input class="form-control @error('title') is-invalid @enderror"" type="text" name="title" value="{{old("title") ?? $comic->title}}">
                 @error("title")
@@ -93,10 +69,3 @@
                     <div class="invalid-feedback">{{$message}}</div>
                 @enderror
             </div>
-
-            <input class="form-control my-3 btn btn-danger" type="submit" value="MODIFICA FUMETTO">
-        </form>
-    </div>
-
-</div>
-@endsection
