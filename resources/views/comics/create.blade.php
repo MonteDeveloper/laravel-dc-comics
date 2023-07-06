@@ -2,7 +2,11 @@
 
 @section('content')
 <div class="container my-3">
-    <h1>Create a Comic</h1>
+    <div class="d-flex justify-content-between align-items-center">
+        <h1 class="px-3">Crea un nuovo fumetto:</h1>
+        <button class="btn btn-danger" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
+    </div>
+    <hr>
     <div class="container d-flex flex-column justify-content-center">
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -70,9 +74,8 @@
                 <div class="invalid-feedback">{{$message}}</div>
             @enderror
 
-            <input class="form-control mt-4 btn btn-success" type="submit" value="AGGIUNGI FUMETTO">
+            <input class="form-control mt-4 btn btn-danger" type="submit" value="AGGIUNGI FUMETTO">
         </form>
-        <button class="btn btn-primary m-3" onclick="window.location = '{{ route('home')}}'">TORNA ALLA HOMEPAGE</button>
     </div>
 
 </div>

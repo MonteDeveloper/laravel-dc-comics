@@ -17,8 +17,8 @@ class ComicController extends Controller
             "series" => "",
             "sale_date" => "nullable|date|max:10",
             "type" => "",
-            "artists" => "nullable|max:100|regex:/^([a-zA-Z]+ [a-zA-Z]+)(, [a-zA-Z]+ [a-zA-Z]+)*$/",
-            "writers" => "nullable|max:100|regex:/^([a-zA-Z]+ [a-zA-Z]+)(, [a-zA-Z]+ [a-zA-Z]+)*$/",
+            "artists" => "nullable|max:65535|regex:/^([^,]+)(, ?[^,]+)*$/",
+            "writers" => "nullable|max:65535|regex:/^([^,]+)(, ?[^,]+)*$/",
         ];        
 
         $messages = [
