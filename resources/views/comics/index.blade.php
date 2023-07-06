@@ -10,7 +10,7 @@
         <hr>
         <div class="d-flex flex-wrap">
             @foreach ($comics as $comic)
-            <div class="p-3 col-3">
+            <div class="p-3 col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="card my-card text-white bg-dark h-100" onclick="window.location = '{{ route('comics.show', $comic->id) }}'">
                     <img src="{{$comic->thumb ?? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'}}" class="card-img-top" alt="comicImg">
                     <div class="card-body d-flex flex-column align-items-center justify-content-center">
