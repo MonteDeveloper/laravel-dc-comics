@@ -12,10 +12,18 @@
                 <div class="col-md-8">
                     <div class="card-body">
                         <h5 class="card-title">{{$comic->title}}</h5>
-                        <p class="card-text"><strong>Descrizione: </strong>{{$comic->description}}</p>
-                        <p class="card-text"><strong>Artisti: </strong><small class="text-muted">{{$comic->artists}}</small></p>
-                        <p class="card-text"><strong>Scrittori: </strong><small class="text-muted">{{$comic->writers}}</small></p>
-                        <p class="card-text"><strong>Prezzo: </strong>${{$comic->price}}</p>
+                        @if ($comic->description)
+                            <p class="card-text"><strong>Descrizione: </strong>{{$comic->description}}</p>
+                        @endif
+                        @if ($comic->artists)
+                            <p class="card-text"><strong>Artisti: </strong><small class="text-muted">{{$comic->artists}}</small></p>
+                        @endif
+                        @if ($comic->writers)
+                            <p class="card-text"><strong>Scrittori: </strong><small class="text-muted">{{$comic->writers}}</small></p>
+                        @endif
+                        @if ($comic->price)
+                            <p class="card-text"><strong>Prezzo: </strong>${{$comic->price}}</p>
+                        @endif
                     </div>
                 </div>
             </div>

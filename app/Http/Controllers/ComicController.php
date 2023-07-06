@@ -4,9 +4,46 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comic;
+use Illuminate\Support\Facades\Validator;
 
 class ComicController extends Controller
 {
+    private function validateProduct($data) {
+        $rules = [
+            "title" => "required",
+            "description" => "nullable|min:5|max:65535",
+            "thumb" => "nullable|url",
+            "price" => "nullable|numeric|between:0.01,9999.99",
+            "series" => "",
+            "sale_date" => "nullable|date|max:10",
+            "type" => "",
+            "artists" => "nullable|max:100|regex:/^([a-zA-Z]+ [a-zA-Z]+)(, [a-zA-Z]+ [a-zA-Z]+)*$/",
+            "writers" => "nullable|max:100|regex:/^([a-zA-Z]+ [a-zA-Z]+)(, [a-zA-Z]+ [a-zA-Z]+)*$/",
+        ];        
+
+        $messages = [
+            "title.required" => "Il 'Titolo' è obbligatorio",
+            "description.min" => "La 'Descrizione' deve essere almeno di :min caratteri",
+            "description.max" => "La 'Descrizione' deve essere al massimo di :max caratteri",
+            "thumb.url" => "Il campo 'Immagine' deve essere un URL valido",
+            "price.numeric" => "Il 'Prezzo' deve essere un numero",
+            "price.between" => "Il 'Prezzo' deve essere compreso tra :min e :max",
+            "sale_date.required" => "La 'Data' di vendita è obbligatoria",
+            "sale_date.date" => "La 'Data' di vendita deve essere una data valida",
+            "artists.required" => "Il campo 'Artisti' è obbligatorio",
+            "artists.max" => "Il campo 'Artisti' deve essere al massimo di :max caratteri",
+            "artists.regex" => "Il campo 'Artisti' deve essere una lista di nomi e cognomi separati da virgola",
+            "writers.required" => "Il campo 'Scrittori' è obbligatorio",
+            "writers.max" => "Il campo 'Scrittori' deve essere al massimo di :max caratteri",
+            "writers.regex" => "Il campo 'Scrittori' deve essere una lista di nomi e cognomi separati da virgola"
+        ];
+        
+
+        $validateData = Validator::make($data, $rules, $messages)->validate();
+
+        return $validateData;
+    } 
+
     /**
      * Display a listing of the resource.
      *
@@ -16,7 +53,7 @@ class ComicController extends Controller
     {
         $comics = Comic::all();
 
-        return view("comics.index", compact("comics") );
+        return view("comics.index", compact("comics"));
     }
 
     /**
@@ -37,22 +74,23 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        
+        $data = $this->validateProduct($request->all());
+
         $comic = new Comic;
         $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
-        $comic->artists = $data['artists'];
-        $comic->writers = $data['writers'];
+        $comic->description = $data['description'] ?? null;
+        $comic->thumb = $data['thumb'] ?? null;
+        $comic->price = $data['price'] ?? null;
+        $comic->series = $data['series'] ?? null;
+        $comic->sale_date = $data['sale_date'] ?? null;
+        $comic->type = $data['type'] ?? null;
+        $comic->artists = $data['artists'] ?? null;
+        $comic->writers = $data['writers'] ?? null;
         $comic->save();
-        
+
         return redirect()->route('comics.show', $comic->id);
     }
+
 
     /**
      * Display the specified resource.
@@ -62,7 +100,9 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        return view("comics.show", compact("comic") );
+        //ECCO A COSA EQUIVALE IL compact()
+        // return view("comics.show", ["comic"=> $comic] );
+        return view("comics.show", compact("comic"));
     }
 
     /**
@@ -73,7 +113,7 @@ class ComicController extends Controller
      */
     public function edit(Comic $comic)
     {
-        return view("comics.edit", compact("comic") );
+        return view("comics.edit", compact("comic"));
     }
 
     /**
@@ -86,7 +126,7 @@ class ComicController extends Controller
     public function update(Request $request, Comic $comic)
     {
         $data = $request->all();
-        
+
         $comic->title = $data['title'];
         $comic->description = $data['description'];
         $comic->thumb = $data['thumb'];
@@ -97,7 +137,9 @@ class ComicController extends Controller
         $comic->artists = $data['artists'];
         $comic->writers = $data['writers'];
         $comic->update();
-        
+
+        //usiamo il redirect per dire: esegui la richiesta sul db E POI mi dai la vista che ti dico
+        //altrimenti se restituiamo direttamente la view, se poi aggiorniamo la pagina rimane in memoria la richiesta fatta al db e la rifarà ogni volta che aggiorniamo, noi non vogliamo questo
         return redirect()->route('comics.show', $comic->id);
     }
 

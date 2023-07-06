@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('comics', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->longText('description');
-            $table->longText('thumb');
-            $table->float('price', 6, 2);
-            $table->string('series');
-            $table->date('sale_date');
-            $table->string('type');
-            $table->string('artists');
-            $table->string('writers');
+            $table->longText('description')->nullable();
+            $table->longText('thumb')->nullable();
+            $table->float('price', 6, 2)->nullable();
+            $table->string('series')->nullable();
+            $table->date('sale_date')->nullable();
+            $table->string('type')->nullable();
+            $table->string('artists')->nullable();
+            $table->string('writers')->nullable();
         });
     }
 
