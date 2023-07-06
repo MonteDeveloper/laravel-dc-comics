@@ -17,6 +17,10 @@ footer {
     color: black;
 }
 
+.my-bgLightDark{
+    background: #1e1e1e;
+}
+
 .my-card {
     &:hover {
         cursor: pointer;
@@ -32,7 +36,7 @@ footer {
     height: 70vh;
 
     img {
-        height: 100% !important;
+        min-height: 100% !important;
         object-fit: cover;
     }
 }

@@ -14,31 +14,37 @@
                     <img src="{{$comic->thumb ?? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/1665px-No-Image-Placeholder.svg.png'}}" alt="comicImg">
                 </div>
                 <div class="col-md-8">
-                    <div class="card-body d-flex flex-column justify-content-around h-100">
-                        <div class="d-flex align-items-center justify-content-center flex-grow">
-                            <h5 class="card-title h3">{{$comic->title}}</h5>
+                    <div class="card-body h-100">
+                        <div class="d-flex flex-column justify-content-between h-100">
+                            <h5 class="card-title h3 text-center my-bgLightDark p-3 rounded">{{$comic->title}}</h5>
+                            <div class="p-3">
+                                @if ($comic->description)
+                                    <h5 class="text-danger">Descrizione:</h5>
+                                    <p class="card-text">{{$comic->description}}</p>
+                                @endif
+                                @if ($comic->series)
+                                    <h5 class="text-danger">Serie:</h5>
+                                    <p class="card-text">{{$comic->series}}</p>
+                                @endif
+                                @if ($comic->type)
+                                <h5 class="text-danger">Tipologia fumetto:</h5>
+                                    <p class="card-text">{{$comic->type}}</p>
+                                @endif
+                                @if ($comic->artists)
+                                    <h5 class="text-danger">Artisti:</h5>
+                                    <p class="card-text">{{$comic->artists}}</p>
+                                @endif
+                                @if ($comic->writers)
+                                    <h5 class="text-danger">Scrittori:</h5>
+                                    <p class="card-text">{{$comic->writers}}</p>
+                                @endif
+                            </div>
+                            <div>
+                                @if ($comic->price)
+                                    <p class="card-text h3 text-center my-bgLightDark p-3 rounded">${{$comic->price}}</p>
+                                @endif
+                            </div>
                         </div>
-                        <div>
-                            @if ($comic->description)
-                                <p class="card-text"><strong class="text-danger">Descrizione: </strong>{{$comic->description}}</p>
-                            @endif
-                            @if ($comic->series)
-                                <p class="card-text"><strong class="text-danger">Artisti: </strong>{{$comic->artists}}</p>
-                            @endif
-                            @if ($comic->type)
-                                <p class="card-text"><strong class="text-danger">Scrittori: </strong>{{$comic->writers}}</p>
-                            @endif
-                            @if ($comic->artists)
-                                <p class="card-text"><strong class="text-danger">Artisti: </strong>{{$comic->artists}}</p>
-                            @endif
-                            @if ($comic->writers)
-                                <p class="card-text"><strong class="text-danger">Scrittori: </strong>{{$comic->writers}}</p>
-                            @endif
-                        </div>
-
-                        @if ($comic->price)
-                            <p class="card-text h1 text-center">${{$comic->price}}</p>
-                        @endif
                     </div>
                 </div>
             </div>
