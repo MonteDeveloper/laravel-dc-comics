@@ -125,17 +125,19 @@ class ComicController extends Controller
      */
     public function update(Request $request, Comic $comic)
     {
-        $data = $request->all();
+        // $data = $request->all();
+
+        $data = $this->validateProduct($request->all());
 
         $comic->title = $data['title'];
-        $comic->description = $data['description'];
-        $comic->thumb = $data['thumb'];
-        $comic->price = $data['price'];
-        $comic->series = $data['series'];
-        $comic->sale_date = $data['sale_date'];
-        $comic->type = $data['type'];
-        $comic->artists = $data['artists'];
-        $comic->writers = $data['writers'];
+        $comic->description = $data['description'] ?? null;
+        $comic->thumb = $data['thumb'] ?? null;
+        $comic->price = $data['price'] ?? null;
+        $comic->series = $data['series'] ?? null;
+        $comic->sale_date = $data['sale_date'] ?? null;
+        $comic->type = $data['type'] ?? null;
+        $comic->artists = $data['artists'] ?? null;
+        $comic->writers = $data['writers'] ?? null;
         $comic->update();
 
         //usiamo il redirect per dire: esegui la richiesta sul db E POI mi dai la vista che ti dico
