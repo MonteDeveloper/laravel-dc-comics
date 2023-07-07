@@ -77,15 +77,16 @@ class ComicController extends Controller
         $data = $this->validateProduct($request->all());
 
         $comic = new Comic;
-        $comic->title = $data['title'];
-        $comic->description = $data['description'] ?? null;
-        $comic->thumb = $data['thumb'] ?? null;
-        $comic->price = $data['price'] ?? null;
-        $comic->series = $data['series'] ?? null;
-        $comic->sale_date = $data['sale_date'] ?? null;
-        $comic->type = $data['type'] ?? null;
-        $comic->artists = $data['artists'] ?? null;
-        $comic->writers = $data['writers'] ?? null;
+        // $comic->title = $data['title'];
+        // $comic->description = $data['description'] ?? null;
+        // $comic->thumb = $data['thumb'] ?? null;
+        // $comic->price = $data['price'] ?? null;
+        // $comic->series = $data['series'] ?? null;
+        // $comic->sale_date = $data['sale_date'] ?? null;
+        // $comic->type = $data['type'] ?? null;
+        // $comic->artists = $data['artists'] ?? null;
+        // $comic->writers = $data['writers'] ?? null;
+        $comic->fill($data);
         $comic->save();
 
         return redirect()->route('comics.show', $comic->id);
@@ -129,15 +130,16 @@ class ComicController extends Controller
 
         $data = $this->validateProduct($request->all());
 
-        $comic->title = $data['title'];
-        $comic->description = $data['description'] ?? null;
-        $comic->thumb = $data['thumb'] ?? null;
-        $comic->price = $data['price'] ?? null;
-        $comic->series = $data['series'] ?? null;
-        $comic->sale_date = $data['sale_date'] ?? null;
-        $comic->type = $data['type'] ?? null;
-        $comic->artists = $data['artists'] ?? null;
-        $comic->writers = $data['writers'] ?? null;
+        // $comic->title = $data['title'];
+        // $comic->description = $data['description'] ?? null;
+        // $comic->thumb = $data['thumb'] ?? null;
+        // $comic->price = $data['price'] ?? null;
+        // $comic->series = $data['series'] ?? null;
+        // $comic->sale_date = $data['sale_date'] ?? null;
+        // $comic->type = $data['type'] ?? null;
+        // $comic->artists = $data['artists'] ?? null;
+        // $comic->writers = $data['writers'] ?? null;
+        $comic->fill($data);
         $comic->update();
 
         //usiamo il redirect per dire: esegui la richiesta sul db E POI mi dai la vista che ti dico
